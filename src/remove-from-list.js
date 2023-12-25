@@ -1,6 +1,6 @@
 const { NotImplementedError } = require('../extensions/index.js');
 
-// const { ListNode } = require('../extensions/list-node.js');
+const { ListNode } = require('../extensions/list-node.js');
 
 /**
  * Given a singly linked list of integers l and an integer k,
@@ -25,7 +25,7 @@ const { NotImplementedError } = require('../extensions/index.js');
 function removeKFromList( l, k ) {
   //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here  
-  if(l.head.value == k){
+  /*if(l.head.value == k){
   	const nodeToRemove = l.head;
     l.head = l.head.next;
     l.length -= 1;
@@ -44,7 +44,44 @@ function removeKFromList( l, k ) {
   	}else{    	
     	count += 1;    	
 	}    
-  }
+  }*/
+  //let node = this.next;
+  /*let prev = 0;
+  let current = l;
+  let toRemove = 0;
+  while (current.next) {
+    //count++;
+    prev = current;
+    current = current.next;
+    if(current.value == k){
+      toRemove = current;
+      prev.next = current.next;
+      current = current.next?.next;
+      toRemove = null;
+    }           
+  }*/
+  //return l;
+  
+  //return l;
+  if(l == null){
+        return l;
+    }
+    while(l.value == k){
+        l = l.next;
+    }
+    thisNode = l;
+    nextNode = thisNode.next;
+    while(nextNode != null){
+        if(nextNode.value == k){          
+            thisNode.next = nextNode.next;            
+            // No more nodes, ie last node was to be removed
+            if(thisNode.next == null)
+                break;
+        }
+        thisNode = thisNode.next;
+        nextNode = thisNode.next;       
+    }
+    return l;
 }
 
 module.exports = {
