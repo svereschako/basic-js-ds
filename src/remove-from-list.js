@@ -78,6 +78,9 @@ function removeKFromList( l, k ) {
             if(thisNode.next == null)
                 break;
         }
+        if(nextNode.value == k && nextNode.next.value == k){
+          thisNode.next = nextNode.next.next;
+        }
         thisNode = thisNode.next;
         nextNode = thisNode.next;       
     }
