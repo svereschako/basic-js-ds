@@ -1,6 +1,6 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { NotImplementedError } = require("../extensions/index.js");
 
-const { ListNode } = require('../extensions/list-node.js');
+const { ListNode } = require("../extensions/list-node.js");
 
 /**
  * Given a singly linked list of integers l and an integer k,
@@ -22,71 +22,34 @@ const { ListNode } = require('../extensions/list-node.js');
  *   }
  * }
  */
-function removeKFromList( l, k ) {
-  //throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here  
-  /*if(l.head.value == k){
-  	const nodeToRemove = l.head;
-    l.head = l.head.next;
-    l.length -= 1;
+
+function removeKFromList(l, k) {
+  // if the list is empty
+  if (!l) {
+    return null;
   }
-  let currentNode = l.head;
-  let count = 0;
-  let prevNode = null;
-  while (count < l.length) {
-  	prevNode = currentNode;
-  	currentNode = currentNode.next;
-  	if(currentNode == k){
-  		prevNode.next = currentNode.next;
-  		currentNode = currentNode.next.next;
-  		count += 2;
-  		l.length -= 1;
-  	}else{    	
-    	count += 1;    	
-	}    
-  }*/
-  //let node = this.next;
-  /*let prev = 0;
+
+  // if it starts with k
+  while (l && l.value === k) {
+    l = l.next;
+  }
+
+  // start checking the rest of the list
   let current = l;
-  let toRemove = 0;
-  while (current.next) {
-    //count++;
-    prev = current;
-    current = current.next;
-    if(current.value == k){
-      toRemove = current;
-      prev.next = current.next;
-      current = current.next?.next;
-      toRemove = null;
-    }           
-  }*/
-  //return l;
-  
-  //return l;
-  if(l == null){
-        return l;
+
+  while (current && current.next !== null) {
+    if (current.next.value === k) {
+      // remove if equals k ( === replace with the next one)
+      current.next = current.next.next;
+    } else {
+      // move to the next one
+      current = current.next;
     }
-    while(l.value == k){
-        l = l.next;
-    }
-    thisNode = l;
-    nextNode = thisNode.next;
-    while(nextNode != null){
-        if(nextNode.value == k){          
-            thisNode.next = nextNode.next;            
-            // No more nodes, ie last node was to be removed
-            if(thisNode.next == null)
-                break;
-        }
-        if(nextNode.value == k && nextNode.next.value == k){
-          thisNode.next = nextNode.next.next;
-        }
-        thisNode = thisNode.next;
-        nextNode = thisNode.next;       
-    }
-    return l;
+  }
+
+  return l;
 }
 
 module.exports = {
-  removeKFromList
+  removeKFromList,
 };
